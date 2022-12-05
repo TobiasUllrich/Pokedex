@@ -1,0 +1,360 @@
+html {
+    scroll-behavior: smooth; /* Standard */
+}
+
+body {
+    margin: 0px; /* Browser-Standard rückgängig machen: Äußerer Abstand */
+    font-family: 'Battambang'; /* Schriftart für den ganzen Body-Bereich festlegen */
+    overflow-x: hidden; /* Standard: Was auf der X-Achse aus dem Body/Tag rausläuft wird nicht mehr gezeigt */
+    /* muss dem Body gegeben werden, ABER funktioniert nicht auf dem Handy -> Lösung: Alles in eine <div> was in <body> ist und diesem <div> das overflow-Attribut geben */
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: beige;
+}
+
+.header img {
+    height: 50px;
+}
+
+.header input {
+    margin-bottom: 50px;
+    margin-top: 50px;
+    margin-left: 100px;
+    margin-right: 50px;
+    height: 30px;
+    border-radius: 10px;
+}
+
+.btn-design {
+    border-radius: 5px;
+    border: 1px solid rgb(212, 212, 212);
+    color: white;
+}
+
+
+#pokedex {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+h1 {
+    margin: 5px;
+}
+
+img {
+    height: 200px;
+    margin: 5px;
+}
+
+button {
+    margin: 5px;
+    width: 75px;
+    cursor: pointer;
+}
+
+.pokecarddesign {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    border: 1px solid grey;
+    margin: 5px;
+    width: 30%;
+    cursor:pointer;
+}
+
+.pokecarddesign:hover {
+    transform:scale(1.01);
+ }
+
+.pokecarddesign:hover img {
+   transform:scale(1.05);
+}
+
+.pokecardsection {
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+}
+
+.shortfacts {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.shortfacts {
+    display: flex;
+    justify-content: center;
+}
+
+.morefacts {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 48px;
+}
+
+.morefactsstyle {
+    display: flex;
+    justify-content: center;
+}
+
+
+.info-bg {
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.info-box {
+    position: relative;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 70%;
+    width: 70%;
+    border-radius: 5px;
+}
+
+.info-box-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 24px;
+}
+
+.info-box-header img {
+    height: 100px;
+    margin: 5px;
+}
+
+.infolist {
+    width: 70%;
+    overflow-y: scroll;
+    margin-bottom: 48px;
+    border: 0px solid grey;
+    border-radius: 5px;
+}
+
+#addSubheader {
+    margin-top: 0px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+#x-cross {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 16px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+#ListforInfos {
+    background-color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 0px;
+}
+
+.d-none {
+    display: none;
+}
+
+#addNodata {
+    text-align: center;
+}
+
+.DummyforColorComparison {
+    background-color: #78c850;
+    background-color: green;
+    background-color: #f08030;
+    background-color: orange;
+    background-color: #6890f0;
+    background-color: blue;
+    background-color: #a8b820;
+    background-color: green;
+    background-color: #a8a878;
+    background-color: brown;
+    background-color: #a040a0;
+    background-color: darkviolet;
+    background-color: #f8d030;
+    background-color: orange;
+    background-color: #e0c068;
+    background-color: orange;
+    background-color: #ee99ac;
+    background-color: red;
+    background-color: #c02038;
+    background-color: red;
+    background-color: #f85888;
+    background-color: red;
+    background-color: #b8a038;
+    background-color: brown;
+    background-color: #705898;
+    background-color: darkviolet;
+    background-color: #98d8d8;
+    background-color: blue;
+    background-color: #7038f8;
+    background-color: darkviolet;
+    background-color: #705848;
+    background-color: brown;
+    background-color: #b8b8d0;
+    background-color: burlywood;
+    background-color: #a890f0;
+    background-color: darkviolet;
+}
+
+
+@media (min-width:700px) and (max-width:1260px) {
+    .pokecardsection {
+        flex-direction: column;
+    }
+
+    .morefacts {
+        margin: 24px;
+        margin-bottom: 48px;
+    }
+
+    .header input {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .info-box {
+        height: 80%;
+        width: 90%;
+    }
+
+    .shortfacts {
+        align-items: center;
+    }
+}
+
+@media (min-width:400px) and (max-width:699px) {
+    .pokecardsection {
+        flex-direction: column;
+    }
+
+    .morefacts {
+        margin: 24px;
+        margin-bottom: 48px;
+    }
+
+    .header input {
+        margin: 10px;
+    }
+
+    .header {
+        flex-direction: column;
+    }
+
+    .morefactsstyle {
+        flex-direction: column;
+    }
+
+    .pokecarddesign {
+        width: 45%;
+    }
+
+    h1 {
+        margin: 0px;
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 12px;
+    }
+
+    #addInfosImg {
+        margin: 0px;
+    }
+
+    #ListforInfos {
+        font-size: 12px;
+        padding-left: 18px;
+    }
+
+    .info-box {
+        height: 80%;
+        width: 90%;
+    }
+
+    .shortfacts {
+        align-items: center;
+    }
+}
+
+@media (min-width:0px) and (max-width:399px) {
+    .pokecardsection {
+        flex-direction: column;
+    }
+
+    .morefacts {
+        margin: 24px;
+        margin-bottom: 48px;
+    }
+
+    .header input {
+        margin: 10px;
+    }
+
+    .header {
+        flex-direction: column;
+    }
+
+    .morefactsstyle {
+        flex-direction: row;
+    }
+
+    .pokecarddesign {
+        width: 90%;
+    }
+
+    h1 {
+        margin: 0px;
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 12px;
+    }
+
+    #addInfosImg {
+        margin: 0px;
+    }
+
+    .info-box {
+        height: 80%;
+        width: 90%;
+    }
+
+    .info-box-header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #ListforInfos {
+        font-size: 12px;
+        padding-left: 18px;
+    }
+
+    .shortfacts {
+        align-items: center;
+    }
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- KOPFBEREICH STANDARD-->
+    <meta charset='UTF-8'>  <!-- UTF-8 ist Standard, Alternativen: "ASCII" oder "ISO-8859-15" --> 
+    <meta http-equiv="X-UA-Compatible" content='IE=edge'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Sorgt für Barrierefreiheit -->
+    <link href="./Img/pokeball-rm.png" type="image/x-icon" rel="icon" />  <!-- Bindet FavIcon ein-->
+    <link rel="stylesheet" type='text/css' media='screen' href="fonts.css"> <!-- Fonts downloaden und über Extra-CSS-Datei einbinden (https://google-webfonts-helper.herokuapp.com/) -->
+
+    <title>Pokedex</title>
+
+    <link href="/favicon.ico" type="image/x-icon" rel="icon" />  <!-- Bindet FavIcon ein-->
+    <link rel="stylesheet" type='text/css' media='screen' href="style.css"> <!-- Statt <style> ... </style> -->
+    
+    <script src="jquery-3.6.0.min.js"></script>
+    <script src="HTML.js"></script> <!-- HTML-generierenden Code in eine Extra-Script-Datei packen -->
+    <script src="script.js"></script> <!-- Statt <script> ... </script> -->
+    
+    <!-- KOPFBEREICH STANDARD-->
+
+</head>
+
+
+<!--Sobald der body-Bereich geladen wurde, wird das Java-Script ausgeführt-->
+
+<body onload="includeHTML(); loadPokemon(endnumberofpokemons);">
+
+    <!--HEADER-->
+    <div w3-include-html="templates/header.html"></div>
+    <!--HEADER-->
+
+    <!--INVISIBLE INFO-BOX-->
+    <div id="info-bg" class="info-bg d-none">        
+        <div id="info-box" class="info-box">
+            <img id="x-cross" src="./Img/x-mark-24.png" alt="" onclick="hideElement('info-bg')">
+
+            <div class="info-box-header">
+                <h1 id="addInfosPokemon">Pokemon</h1>
+                <img id="addInfosImg" src="" alt=""> 
+            </div>
+            <h2 id="addSubheader"></h2>
+            <div class="infolist">
+              <ul id="ListforInfos"></ul>
+            </div>
+            <h3 id="addNodata" class="d-none">No data available!</h3>
+        </div>
+    </div>
+    <!--INVISIBLE INFO-BOX-->
+
+
+    <div id="pokedex">
+        <!--HTML-CODE-->
+    </div>
+
+    <!--FOOTER-->
+    <div w3-include-html="templates/footer.html"></div>
+    <!--FOOTER-->
+
+</html>

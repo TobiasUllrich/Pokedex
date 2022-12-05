@@ -1,0 +1,13 @@
+/* battambang-regular - latin */
+@font-face {
+  font-family: 'Battambang';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./fonts/battambang-v24-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('./fonts/battambang-v24-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('./fonts/battambang-v24-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('./fonts/battambang-v24-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('./fonts/battambang-v24-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('./fonts/battambang-v24-latin-regular.svg#Battambang') format('svg'); /* Legacy iOS */
+}
