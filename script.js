@@ -1,3 +1,5 @@
+// https://github.com/duiker101/pokemon-type-svg-icons/tree/master/icons
+
 /* [1.] Funktion um weitere HTML-Dateien einzubinden (Code von w3c)*/
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]'); //Alle Elemente mit Attribut '[w3-include-html]' werden ausgewählt
@@ -56,9 +58,7 @@ function errorFunction() {
 /* [5.] Render the currenpokemon */
 function renderPokemonInfo(currentpokemon, id) {
     let picture = currentpokemon['sprites']['other']['official-artwork']['front_shiny']; // Picture of Pokemon
-    console.log(currentpokemon['sprites']);
-    console.log(currentpokemon['sprites']['other']);
-    console.log(currentpokemon['sprites']['other']['official-artwork']['front_shiny']);
+    //console.log(currentpokemon['stats']); To add
     let name = capitalizeFirstLetter(currentpokemon['name']); // Name of Pokemon
 
     setbgcolorforCurrentPokemon();
@@ -76,8 +76,15 @@ function renderPokemonInfo(currentpokemon, id) {
 function fillPokecard(id, picture, name) {
     document.getElementById(`name${id}`).innerHTML = name;
     document.getElementById(`image${id}`).src = picture;
-    document.getElementById(`number${id}`).innerHTML = '<b>ID:</b> ' + currentpokemon['id'];
-    document.getElementById(`types${id}`).innerHTML = '<b>Type:</b> ' + capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']);
+    document.getElementById(`number${id}`).innerHTML = `<b># ${currentpokemon['id']}</b>`;
+    
+    let type1 = currentpokemon['types'][0]['type']['name'];
+    document.getElementById(`types${id}`).innerHTML = `<div class="icon ${type1}"><img src="./Img/${type1}.svg"></div>`;
+    if (typeof currentpokemon['types'][1] !== 'undefined')
+    {let type2 = currentpokemon['types'][1]['type']['name'];
+     document.getElementById(`types${id}`).innerHTML += `<div class="pad-lef"><div class="icon ${type2}"><img src="./Img/${type2}.svg"></div></div>`;
+    };
+
     document.getElementById(`height${id}`).innerHTML = '<b>Height:</b> ' + currentpokemon['height'] / 10 + ' m';
     document.getElementById(`weight${id}`).innerHTML = '<b>Weight:</b> ' + currentpokemon['weight'] / 10 + ' kg';
     document.getElementById(`base-experience${id}`).innerHTML = '<b>Experience:</b> ' + currentpokemon['base_experience'];
@@ -165,12 +172,13 @@ function showAbilities(id, Info, picture, name, bgcol) {
 
 
 /* [12.] If you press the Moves-Button */
-function showMoves(id, Info, picture, name, bgcol) {
+async function showMoves(id, Info, picture, name, bgcol) {
     let path = `https://pokeapi.co/api/v2/pokemon/${id}`; //Ursprüngliche Suche
-    loadAdditionalInfos(path, Info);
+    await loadAdditionalInfos(path, Info);
 
     let text = `Moves of ${name}:`;
     fillDetailsCard(name, picture, bgcol, text);
+    setTimeout(()=>{document.getElementById(`pokemon${id}`).classList.remove('tobg');},1000);
 }
 /* [12.] If you press the Moves-Button */
 
@@ -232,7 +240,6 @@ function fillLocations(usage){
 /* [16.] Species will be listed */
 function fillSpecies(usage){
         let len = usage['flavor_text_entries'].length;
-        //console.log('Locations Länge: ',usage.length);
         let list = document.getElementById('ListforInfos')
         list.innerHTML=``;
   
@@ -331,7 +338,6 @@ function filterPokemons() {
 
     let searchinput = document.getElementById('inputfield').value;
     let len = document.getElementById('inputfield').value.length;
-    //console.log(len);
 
     for (i = 1 ; i < endnumberofpokemons ; i++) {
        // Problem beim Filter ist, dass er sich teilweise auf HTML-Elemente anwendet die noch gar nicht existieren!!!
