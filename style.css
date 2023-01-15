@@ -67,15 +67,12 @@ button {
     margin: 5px;
     width: 30%;
     cursor:pointer;
+    transition: transform 225ms ease-in-out;
 }
 
 .pokecarddesign:hover {
     transform:scale(1.01);
  }
-
-.pokecarddesign:hover img {
-   transform:scale(1.05);
-}
 
 .pokecardsection {
     display: flex;

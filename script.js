@@ -55,7 +55,10 @@ function errorFunction() {
 
 /* [5.] Render the currenpokemon */
 function renderPokemonInfo(currentpokemon, id) {
-    let picture = currentpokemon['sprites']['front_shiny']; // Picture of Pokemon
+    let picture = currentpokemon['sprites']['other']['official-artwork']['front_shiny']; // Picture of Pokemon
+    console.log(currentpokemon['sprites']);
+    console.log(currentpokemon['sprites']['other']);
+    console.log(currentpokemon['sprites']['other']['official-artwork']['front_shiny']);
     let name = capitalizeFirstLetter(currentpokemon['name']); // Name of Pokemon
 
     setbgcolorforCurrentPokemon();
