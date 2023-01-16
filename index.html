@@ -12,15 +12,13 @@
 
     <title>Pokedex</title>
 
-    <link href="/favicon.ico" type="image/x-icon" rel="icon" />  <!-- Bindet FavIcon ein-->
     <link rel="stylesheet" type='text/css' media='screen' href="style.css"> <!-- Statt <style> ... </style> -->
     
     <script src="jquery-3.6.0.min.js"></script>
     <script src="HTML.js"></script> <!-- HTML-generierenden Code in eine Extra-Script-Datei packen -->
     <script src="script.js"></script> <!-- Statt <script> ... </script> -->
-    
     <!-- KOPFBEREICH STANDARD-->
-
+    
 </head>
 
 
@@ -42,7 +40,7 @@
                 <img id="addInfosImg" src="" alt=""> 
             </div>
             <h2 id="addSubheader"></h2>
-            <div class="infolist">
+            <div id="infolist" class="infolist">
               <ul id="ListforInfos"></ul>
             </div>
             <h3 id="addNodata" class="d-none">No data available!</h3>
@@ -50,6 +48,12 @@
     </div>
     <!--INVISIBLE INFO-BOX-->
 
+    <!--INVISIBLE LOADING-BOX-->
+    <div id="loader-bg" class="info-bg">
+       <img src="./Img/pokeball-loading.png">  
+       <div class="loader"></div>
+    </div>
+    <!--INVISIBLE LOADING-BOX-->
 
     <div id="pokedex">
         <!--HTML-CODE-->

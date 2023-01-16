@@ -90,6 +90,7 @@ button {
 .pokecarddesignForHover:hover {
     transform:scale(1.01);
     box-shadow: 0px 0px 5px 5px #E6E6E6;
+    cursor:auto;
 }
 
 .pokecardsection {
@@ -140,8 +141,8 @@ button {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 70%;
-    width: 70%;
+    height: 60%;
+    width: 60%;
     border-radius: 5px;
 }
 
@@ -159,7 +160,7 @@ button {
 }
 
 .infolist {
-    width: 70%;
+    width: 60%;
     overflow-y: scroll;
     margin-bottom: 48px;
     border: 0px solid grey;
@@ -207,6 +208,14 @@ button {
 
 .pad-bot{
     padding-bottom:5px;
+}
+
+.pad-bot2{
+    padding-bottom:10px;
+}
+
+.pad-bot3{
+    padding-bottom:20px;
 }
 
 .pad-lef{
@@ -264,7 +273,7 @@ button {
 .icon:hover{
     filter: saturate(200%);
     transform: scale(1.1);
-    cursor: pointer;
+    cursor: auto;
 }
 
 .icon img {
@@ -390,6 +399,105 @@ button {
 /* Scrollbar */
 
 
+/* For Scrollbars */
+.sbbug::-webkit-scrollbar-thumb { 
+    background: green;
+}
+
+.sbdark::-webkit-scrollbar-thumb { 
+    background: brown;
+}
+
+.sbdragon::-webkit-scrollbar-thumb { 
+    background: darkviolet;
+}
+
+.sbelectric::-webkit-scrollbar-thumb { 
+    background: orange;
+}
+
+.sbfire::-webkit-scrollbar-thumb { 
+    background: orange;
+}
+
+.sbfairy::-webkit-scrollbar-thumb { 
+    background: red;
+}
+
+.sbfighting::-webkit-scrollbar-thumb { 
+    background: red;
+}
+
+.sbflying::-webkit-scrollbar-thumb { 
+    background: darkviolet;
+}
+
+.sbgohst::-webkit-scrollbar-thumb { 
+    background: darkviolet;
+}
+
+.sbgrass::-webkit-scrollbar-thumb { 
+    background: green;
+}
+
+.sbground::-webkit-scrollbar-thumb { 
+    background: orange;
+}
+
+.sbice::-webkit-scrollbar-thumb { 
+    background: blue;
+}
+
+.sbnormal::-webkit-scrollbar-thumb { 
+    background: brown;
+}
+
+.sbpoison::-webkit-scrollbar-thumb { 
+    background: darkviolet;
+}
+
+.sbpsychic::-webkit-scrollbar-thumb { 
+    background: red;
+}
+
+.sbrock::-webkit-scrollbar-thumb { 
+    background: brown;
+}
+
+.sbsteel::-webkit-scrollbar-thumb { 
+    background: burlywood;
+}
+
+.sbwater::-webkit-scrollbar-thumb { 
+    background: blue;
+}
+/* For Scrollbars */
+
+/* Spinner */
+#loader-bg{
+    background-color: white;
+}
+
+#loader-bg img{
+    position:absolute;
+    width: 50px;
+    height: 50px;
+}
+
+.loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid black; /* Blue */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+/* Spinner */
 
 @media (min-width:700px) and (max-width:1260px) {
     .pokecardsection {

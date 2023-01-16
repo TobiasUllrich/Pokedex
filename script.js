@@ -22,9 +22,11 @@ let currentpokemon;          // JSON-Array of Current Pokemon
 let usage;                   // JSON-Array for Details of Pokemon
 let bgcol;                   // Background-Color of Pokemon
 let bgcolbtn;                // Background-Color of Button
+let bgcollist;               // Background-Color of List
+let type;                    // Type of Pokemon
 let loadingPokemons = false; // Variable to give Information if Pokemons are being loaded right know
 let id = 1;                  // id of Pokemon
-let endnumberofpokemons = 51; // 899 is MAX       
+let endnumberofpokemons = 51; // 899 is MAX
 /* [2.] Global Variables: Current loaded Pokemon & Number of Pokemons that will be loaded */
 
 
@@ -44,6 +46,7 @@ async function loadPokemon(endnumberofpokemons) {
     }
     filterPokemons(); // Nachdem der Lade-Prozess beeendet wurde muss der Filter nochmal angewendet werden
     loadingPokemons=false; //Loading Process finished
+    document.getElementById('loader-bg').classList.add('d-none');
 }
 /* [3.] Function to load Pokemons */
 
@@ -58,7 +61,6 @@ function errorFunction() {
 /* [5.] Render the currenpokemon */
 function renderPokemonInfo(currentpokemon, id) {
     let picture = currentpokemon['sprites']['other']['official-artwork']['front_shiny']; // Picture of Pokemon
-    //console.log(currentpokemon['stats']); To add
     let name = capitalizeFirstLetter(currentpokemon['name']); // Name of Pokemon
 
     setbgcolorforCurrentPokemon();
@@ -99,96 +101,98 @@ function fillPokecard(id, picture, name) {
 
 /* [8.] Saves the background-color for the PokeCard of the Current Pokemon */
 function setbgcolorforCurrentPokemon() {
-    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Grass') { bgcol = '#78c850'; bgcolbtn ='green'; };
+    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Grass') { bgcol = '#78c850'; bgcolbtn ='green'; type='grass'; bgcollist='#ccffb3'};
 
-    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Fire') { bgcol = '#f08030'; bgcolbtn ='orange'; };
+    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Fire') { bgcol = '#f08030'; bgcolbtn ='orange'; type='fire'; bgcollist='#ffeb99'};
 
-    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Water') { bgcol = '#6890f0'; bgcolbtn ='blue'; };
+    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Water') { bgcol = 'rgb(80, 125, 228)'; bgcolbtn ='blue'; type='water'; bgcollist='#cce6ff'}; //#6890f0
 
-    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Bug') { bgcol = '#a8b820'; bgcolbtn ='green'; };
+    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Bug') { bgcol = 'rgb(168, 215, 32)'; bgcolbtn ='green'; type='bug'; bgcollist='#ccffb3'}; //#a8b820
 
-    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Normal') { bgcol = '#a8a878'; bgcolbtn ='brown'; };
+    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Normal') { bgcol = 'rgb(196, 186, 120)'; bgcolbtn ='brown'; type='normal'; bgcollist='#ffcc99'}; //#a8a878
 
-    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Poison') { bgcol = '#a040a0'; bgcolbtn ='darkviolet'; };
+    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Poison') { bgcol = '#a040a0'; bgcolbtn ='darkviolet'; type='poison'; bgcollist='#ffb3ff'};
 
-    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Electric') { bgcol = '#f8d030'; bgcolbtn ='orange'; };
+    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Electric') { bgcol = 'yellow'; bgcolbtn ='orange'; type='electric'; bgcollist='#ffeb99'}; //#f8d030
 
-    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Ground') { bgcol = '#e0c068'; bgcolbtn ='orange'; };
+    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Ground') { bgcol = '#e0c068'; bgcolbtn ='orange'; type='ground'; bgcollist='#ffeb99'};
 
-    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Fairy') { bgcol = '#ee99ac'; bgcolbtn ='red'; };
+    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Fairy') { bgcol = 'rgb(260, 173, 172)'; bgcolbtn ='red'; type='fairy'; bgcollist='#ff9999'}; //#ee99ac
 
-    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Fighting') { bgcol = '#c02038'; bgcolbtn = 'red'; };
+    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Fighting') { bgcol = '#c02038'; bgcolbtn = 'red'; type='fighting'; bgcollist='#ff9999'};
 
-    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Psychic') { bgcol = '#f85888'; bgcolbtn = 'red'; };
+    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Psychic') { bgcol = '#f85888'; bgcolbtn = 'red'; type='psychic'; bgcollist='#ff9999'};
 
-    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Rock') { bgcol = '#b8a038'; bgcolbtn = 'brown'; };
+    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Rock') { bgcol = '#b8a038'; bgcolbtn = 'brown'; type='rock'; bgcollist='#ffcc99'};
 
-    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Ghost') { bgcol = '#705898'; bgcolbtn = 'darkviolet'; };
+    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Ghost') { bgcol = '#705898'; bgcolbtn = 'darkviolet'; type='ghost'; bgcollist='#ffb3ff'};
 
-    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Ice') { bgcol = '#98d8d8'; bgcolbtn = 'blue'; };
+    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Ice') { bgcol = '#98d8d8'; bgcolbtn = 'blue'; type='ice'; bgcollist='#cce6ff'};
 
-    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Dragon') { bgcol = '#7038f8'; bgcolbtn = 'darkviolet'; };
+    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Dragon') { bgcol = '#7038f8'; bgcolbtn = 'darkviolet'; type='dragon'; bgcollist='#ffb3ff'};
 
-    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Dark') { bgcol = '#705848'; bgcolbtn = 'brown'; };
+    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Dark') { bgcol = '#705848'; bgcolbtn = 'brown'; type='dark'; bgcollist='#ffcc99'};
 
-    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Steel') { bgcol = '#b8b8d0'; bgcolbtn = 'burlywood'; };
+    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Steel') { bgcol = '#b8b8d0'; bgcolbtn = 'burlywood'; type='steel'; bgcollist='#e0e0d1'};
 
-    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Flying') { bgcol = '#a890f0'; bgcolbtn = 'darkviolet'; };
+    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Flying') { bgcol = '#a890f0'; bgcolbtn = 'darkviolet'; type='fyling'; bgcollist='#ffb3ff'};
 }
 /* [8.] Saves the background-color for the PokeCard of the Current Pokemon */
 
-
 /* [9.] If you press the Locations-Button */
-function showLocations(id, Info, picture, name, bgcol) {
+function showLocations(id, Info, picture, name, bgcol, type, bgcollist) {
     let path = `https://pokeapi.co/api/v2/pokemon/${id}/encounters`;
     loadAdditionalInfos(path, Info);
 
     let text = `Find ${name} in these locations:`;
-    fillDetailsCard(name, picture, bgcol, text);
+    fillDetailsCard(name, picture, bgcol, text, type, bgcollist);
 }
 /* [9.] If you press the Locations-Button */
 
-
 /* [10.] If you press the Species-Button */
-function showSpecies(id, Info, picture, name, bgcol) {
+function showSpecies(id, Info, picture, name, bgcol, type, bgcollist) {
     let path = `https://pokeapi.co/api/v2/pokemon-species/${id}/`;
     loadAdditionalInfos(path, Info);
 
-    let text = `More infos on ${name}:`;
-    fillDetailsCard(name, picture, bgcol, text);
+    let text = `Infos about the species of ${name}:`;
+    fillDetailsCard(name, picture, bgcol, text, type, bgcollist);
 }
 /* [10.] If you press the Species-Button */
 
 
 /* [11.] If you press the Abilities-Button */
-function showAbilities(id, Info, picture, name, bgcol) {
+function showAbilities(id, Info, picture, name, bgcol, type, bgcollist) {
     let path = `https://pokeapi.co/api/v2/pokemon/${id}`; //Ursprüngliche Suche
     loadAdditionalInfos(path, Info);
 
     let text = `Abilities of ${name}:`;
-    fillDetailsCard(name, picture, bgcol, text);
+    fillDetailsCard(name, picture, bgcol, text, type, bgcollist);
 }
 /* [11.] If you press the Abilities-Button */
 
 
 /* [12.] If you press the Moves-Button */
-async function showMoves(id, Info, picture, name, bgcol) {
+async function showMoves(id, Info, picture, name, bgcol, type, bgcollist) {
     let path = `https://pokeapi.co/api/v2/pokemon/${id}`; //Ursprüngliche Suche
     await loadAdditionalInfos(path, Info);
 
     let text = `Moves of ${name}:`;
-    fillDetailsCard(name, picture, bgcol, text);
-    setTimeout(()=>{document.getElementById(`pokemon${id}`).classList.remove('tobg');},1000);
+    fillDetailsCard(name, picture, bgcol, text, type, bgcollist);
 }
 /* [12.] If you press the Moves-Button */
 
 
 /* [13.] If you press any of the Buttons */
-function fillDetailsCard(name, picture, bgcol, text) {
+function fillDetailsCard(name, picture, bgcol, text, type, bgcollist) {
     document.getElementById(`addInfosPokemon`).innerHTML = name;
     document.getElementById(`addInfosImg`).src = picture;
     document.getElementById(`addSubheader`).innerHTML = text;
+
     document.getElementById('info-box').style = `background-color: ${bgcol};`
+    document.getElementById('ListforInfos').style = `background-color: ${bgcollist};`
+    document.getElementById('infolist').className='';
+    document.getElementById('infolist').classList.add(`infolist`);
+    document.getElementById('infolist').classList.add(`sb${type}`);
     document.getElementById('info-bg').classList.remove('d-none');
 }
 /* [13.] If you press any of the Buttons */
@@ -199,7 +203,7 @@ async function loadAdditionalInfos(url, Info) {
 
     let response = await fetch(url);
     let usage = await response.json();
-    
+
     hideElement('addNodata');
     showElement('ListforInfos');
     emptyList();
