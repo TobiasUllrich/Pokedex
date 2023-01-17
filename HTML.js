@@ -16,12 +16,12 @@ function generatePokecard(id, picture, name, bgcol) {
 
     <div class="morefacts">
         <div class="morefactsstyle">
-        <button class="btn-design" id="location-area-encounters${id}" onclick="showLocations(${id},'Location','${picture}','${name}','${bgcol}','${type}','${bgcollist}')">Locations</button>
-        <button class="btn-design" id="species${id}" onclick="showSpecies(${id},'Species','${picture}','${name}','${bgcol}','${type}','${bgcollist}')">Species</button>
+        <button class="btn-design btn1" id="location-area-encounters${id}" onclick="showLocations(${id},'Location','${picture}','${name}','${bgcol}','${type}','${bgcollist}')">Locations</button>
+        <button class="btn-design btn2" id="species${id}" onclick="showSpecies(${id},'Species','${picture}','${name}','${bgcol}','${type}','${bgcollist}')">Species</button>
         </div>
         <div class="morefactsstyle">
-        <button class="btn-design" id="abilities${id}" onclick="showAbilities(${id},'Abilities','${picture}','${name}','${bgcol}','${type}','${bgcollist}')">Abilities</button>
-        <button class="btn-design" id="moves${id}" onclick="showMoves(${id},'Moves','${picture}','${name}','${bgcol}','${type}','${bgcollist}')">Moves</button>
+        <button class="btn-design btn3" id="abilities${id}" onclick="showAbilities(${id},'Abilities','${picture}','${name}','${bgcol}','${type}','${bgcollist}')">Abilities</button>
+        <button class="btn-design btn4" id="moves${id}" onclick="showMoves(${id},'Moves','${picture}','${name}','${bgcol}','${type}','${bgcollist}')">Moves</button>
         </div>
        </div>
  </div>`;

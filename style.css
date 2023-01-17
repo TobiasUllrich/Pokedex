@@ -43,10 +43,94 @@ body {
     border-radius: 10px;
 }
 
-.btn-design {
+/* .btn-design {
     border-radius: 5px;
     border: 1px solid rgb(212, 212, 212);
     color: white;
+} */
+
+/* vvvvvvvvvvvvvvvvvvvvvvvvvv */
+/* CSS */
+.btn-design {
+  appearance: button;
+  background-color: #4D4AE8;
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, .15), rgba(255, 255, 255, 0));
+  border: 1px solid #4D4AE8;
+  border-radius: 1rem;
+  box-shadow: rgba(255, 255, 255, 0.15) 0 1px 0 inset,rgba(46, 54, 80, 0.075) 0 1px 1px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Inter,sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  margin: 0;
+  padding: .5rem 1rem;
+  text-align: center;
+  text-transform: none;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  width:100px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.btn-design:focus:not(:focus-visible),
+.btn-design:focus {
+  outline: 0;
+}
+
+.btn-design:hover {
+  background-color: #3733E5;
+  border-color: #3733E5;
+}
+
+.btn-design:focus {
+  background-color: #413FC5;
+  border-color: #3E3BBA;
+  box-shadow: rgba(255, 255, 255, 0.15) 0 1px 0 inset, rgba(46, 54, 80, 0.075) 0 1px 1px, rgba(104, 101, 235, 0.5) 0 0 0 .2rem;
+}
+
+.btn-design:active {
+  background-color: #3E3BBA;
+  background-image: none;
+  border-color: #3A38AE;
+  box-shadow: rgba(46, 54, 80, 0.125) 0 3px 5px inset;
+}
+
+.btn-design:active:focus {
+  box-shadow: rgba(46, 54, 80, 0.125) 0 3px 5px inset, rgba(104, 101, 235, 0.5) 0 0 0 .2rem;
+}
+
+.btn-design:disabled {
+  background-image: none;
+  box-shadow: none;
+  opacity: .65;
+  pointer-events: none;
+}
+/* vvvvvvvvvvvvvvvvvvvvvvvvvv */
+
+.btn1{
+    margin-right:10px;
+    margin-bottom:5px;
+}
+.btn3{
+    margin-right:10px;
+    margin-top:5px;
+}
+.btn2{
+    margin-left:10px;
+    margin-bottom:5px;
+}
+.btn4{
+    margin-left:10px;
+    margin-top:5px;
 }
 
 button:hover {
@@ -499,7 +583,7 @@ button {
   }
 /* Spinner */
 
-@media (min-width:700px) and (max-width:1260px) {
+@media (min-width:901px) and (max-width:1260px) {
     .pokecardsection {
         flex-direction: column;
     }
@@ -522,6 +606,54 @@ button {
     .shortfacts {
         align-items: center;
     }
+}
+
+
+@media (min-width:700px) and (max-width:900px) {
+    .pokecardsection {
+        flex-direction: column;
+    }
+
+    .morefacts {
+        margin: 24px;
+        margin-bottom: 48px;
+    }
+
+    .header input {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .info-box {
+        height: 80%;
+        width: 90%;
+    }
+
+    .shortfacts {
+        align-items: center;
+    }
+
+    .btn-design {
+       width:90px; 
+    }
+
+    .btn1{
+        margin-right:5px;
+        margin-bottom:5px;
+    }
+    .btn3{
+        margin-right:5px;
+        margin-top:5px;
+    }
+    .btn2{
+        margin-left:5px;
+        margin-bottom:5px;
+    }
+    .btn4{
+        margin-left:5px;
+        margin-top:5px;
+    }
+
 }
 
 @media (min-width:400px) and (max-width:699px) {
@@ -575,6 +707,24 @@ button {
 
     .shortfacts {
         align-items: center;
+    }
+
+    .btn1{
+        margin-right:unset;
+        margin-bottom:5px;
+    }
+    .btn3{
+        margin-right:unset;
+        margin-bottom:5px;
+        margin-top: unset;
+    }
+    .btn2{
+        margin-left:unset;
+        margin-bottom:5px;
+    }
+    .btn4{
+        margin-left:unset;
+        margin-top: unset;
     }
 }
 
