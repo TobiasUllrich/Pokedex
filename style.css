@@ -43,14 +43,7 @@ body {
     border-radius: 10px;
 }
 
-/* .btn-design {
-    border-radius: 5px;
-    border: 1px solid rgb(212, 212, 212);
-    color: white;
-} */
-
-/* vvvvvvvvvvvvvvvvvvvvvvvvvv */
-/* CSS */
+/* Button-Design */
 .btn-design {
   appearance: button;
   background-color: #4D4AE8;
@@ -114,7 +107,7 @@ body {
   opacity: .65;
   pointer-events: none;
 }
-/* vvvvvvvvvvvvvvvvvvvvvvvvvv */
+/* Button-Design */
 
 .btn1{
     margin-right:10px;
