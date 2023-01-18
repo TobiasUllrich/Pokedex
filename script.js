@@ -27,6 +27,12 @@ let type;                    // Type of Pokemon
 let loadingPokemons = false; // Variable to give Information if Pokemons are being loaded right know
 let id = 1;                  // id of Pokemon
 let endnumberofpokemons = 51; // 899 is MAX
+
+let elements =['Grass','Fire','Water','Bug','Normal','Poison','Electric','Ground','Fairy','Fighting','Psychic','Rock','Ghost','Ice','Dragon','Dark','Steel','Flying']
+let bgcols =['#78c850','#f08030','rgb(80, 125, 228)','rgb(168, 215, 32)','rgb(196, 186, 120)','#a040a0','yellow','#e0c068','rgb(260, 173, 172)','#c02038','#f85888','#b8a038','#705898','#98d8d8','#7038f8','#705848','#b8b8d0','#a890f0'];
+let bgcolbtns =['green','orange','blue','green','brown','darkviolet','orange','orange','red','red','red','brown','darkviolet','blue','darkviolet','brown','burlywood','darkviolet'];
+let types =['grass','fire','water','bug','normal','poison','electric','ground','fairy','fighting','psychic','rock','ghost','ice','dragon','dark','steel','flying'];
+let bgcollists = ['#ccffb3','#ffeb99','#cce6ff','#ccffb3','#ffcc99','#ffb3ff','#ffeb99','#ffeb99','#ff9999','#ff9999','#ff9999','#ffcc99','#ffb3ff','#cce6ff','#ffb3ff','#ffcc99','#e0e0d1','#ffb3ff'];
 /* [2.] Global Variables: Current loaded Pokemon & Number of Pokemons that will be loaded */
 
 
@@ -102,45 +108,15 @@ function createIconsForPokecard(id){
 /* [7.] Creates Icons for the Type of the current Pokemon, e.g. fire & air */
 
 
-/* [8.] Saves the background-color for the PokeCard of the Current Pokemon */
-function setbgcolorforCurrentPokemon() {
-    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Grass') { bgcol = '#78c850'; bgcolbtn ='green'; type='grass'; bgcollist='#ccffb3'};
-
-    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Fire') { bgcol = '#f08030'; bgcolbtn ='orange'; type='fire'; bgcollist='#ffeb99'};
-
-    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Water') { bgcol = 'rgb(80, 125, 228)'; bgcolbtn ='blue'; type='water'; bgcollist='#cce6ff'}; //#6890f0
-
-    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Bug') { bgcol = 'rgb(168, 215, 32)'; bgcolbtn ='green'; type='bug'; bgcollist='#ccffb3'}; //#a8b820
-
-    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Normal') { bgcol = 'rgb(196, 186, 120)'; bgcolbtn ='brown'; type='normal'; bgcollist='#ffcc99'}; //#a8a878
-
-    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Poison') { bgcol = '#a040a0'; bgcolbtn ='darkviolet'; type='poison'; bgcollist='#ffb3ff'};
-
-    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Electric') { bgcol = 'yellow'; bgcolbtn ='orange'; type='electric'; bgcollist='#ffeb99'}; //#f8d030
-
-    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Ground') { bgcol = '#e0c068'; bgcolbtn ='orange'; type='ground'; bgcollist='#ffeb99'};
-
-    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Fairy') { bgcol = 'rgb(260, 173, 172)'; bgcolbtn ='red'; type='fairy'; bgcollist='#ff9999'}; //#ee99ac
-
-    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Fighting') { bgcol = '#c02038'; bgcolbtn = 'red'; type='fighting'; bgcollist='#ff9999'};
-
-    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Psychic') { bgcol = '#f85888'; bgcolbtn = 'red'; type='psychic'; bgcollist='#ff9999'};
-
-    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Rock') { bgcol = '#b8a038'; bgcolbtn = 'brown'; type='rock'; bgcollist='#ffcc99'};
-
-    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Ghost') { bgcol = '#705898'; bgcolbtn = 'darkviolet'; type='ghost'; bgcollist='#ffb3ff'};
-
-    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Ice') { bgcol = '#98d8d8'; bgcolbtn = 'blue'; type='ice'; bgcollist='#cce6ff'};
-
-    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Dragon') { bgcol = '#7038f8'; bgcolbtn = 'darkviolet'; type='dragon'; bgcollist='#ffb3ff'};
-
-    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Dark') { bgcol = '#705848'; bgcolbtn = 'brown'; type='dark'; bgcollist='#ffcc99'};
-
-    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Steel') { bgcol = '#b8b8d0'; bgcolbtn = 'burlywood'; type='steel'; bgcollist='#e0e0d1'};
-
-    if (capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']) == 'Flying') { bgcol = '#a890f0'; bgcolbtn = 'darkviolet'; type='fyling'; bgcollist='#ffb3ff'};
+/* [8.] Saves the different colors for the PokeCard of the Current Pokemon */
+function setbgcolorforCurrentPokemon() {    
+    let id = elements.indexOf(capitalizeFirstLetter(currentpokemon['types'][0]['type']['name']));
+    bgcol = bgcols[id]; 
+    bgcolbtn =bgcolbtns[id]; 
+    type=types[id]; 
+    bgcollist=bgcollists[id];    
 }
-/* [8.] Saves the background-color for the PokeCard of the Current Pokemon */
+/* [8.] Saves the different colors for the PokeCard of the Current Pokemon */
 
 
 /* [9.] If you press the Locations-Button */
@@ -447,3 +423,6 @@ $(window).on('scroll', function() {
     //console.log('TOUCHEND');
  };};
 /* [25.] jQuery zum Nachladen von Daten, wenn man übers Scrollen ganz unten beim Dokument angekommen ist */
+
+
+
