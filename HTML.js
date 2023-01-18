@@ -1,4 +1,4 @@
-/* [6.] Generates the PokeCard for the Current Pokemon */
+/* Generates the PokeCard for the Current Pokemon */
 function generatePokecard(id, picture, name, bgcol) {
     document.getElementById('pokedex').innerHTML += `
     <div id="pokemon${id}" class="pokecarddesign pokecarddesignForHover">
@@ -10,7 +10,7 @@ function generatePokecard(id, picture, name, bgcol) {
             <div id="types${id}" class="types pad-bot2"></div>
             <div id="height${id}" class="pad-bot"></div>
             <div id="weight${id}" class="pad-bot"></div>
-            <div id="base-experience${id}"></div>
+            <div id="base-experience${id}" class="curs"></div>
         </div>
     </div>
 
@@ -26,5 +26,5 @@ function generatePokecard(id, picture, name, bgcol) {
        </div>
  </div>`;
 }
-/* [6.] Generates the PokeCard for the Current Pokemon */
+/* Generates the PokeCard for the Current Pokemon */
 

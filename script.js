@@ -2,12 +2,12 @@
 
 /* [1.] Funktion um weitere HTML-Dateien einzubinden (Code von w3c)*/
 async function includeHTML() {
-    let includeElements = document.querySelectorAll('[w3-include-html]'); //Alle Elemente mit Attribut '[w3-include-html]' werden ausgewählt
+    let includeElements = document.querySelectorAll('[w3-include-html]');
     for (let i = 0; i < includeElements.length; i++) {
         const element = includeElements[i];
-        file = element.getAttribute("w3-include-html"); // die Suche nach dem Attribut beinhaltet auch header.html, wenn die Seite dieses Attribut besitzt
-        let resp = await fetch(file); // await kann nur mit asynchroner Funktion verwendet werden
-        if (resp.ok) {   // ok = Boolean Variable die den Status anzeigt ob alles ok ist (true) oder eben nicht (false)
+        file = element.getAttribute("w3-include-html");
+        let resp = await fetch(file);
+        if (resp.ok) {
             element.innerHTML = await resp.text();
         } else {
             element.innerHTML = 'Page not found';
@@ -44,7 +44,7 @@ async function loadPokemon(endnumberofpokemons) {
         renderPokemonInfo(currentpokemon, id);
         
     }
-    filterPokemons(); // Nachdem der Lade-Prozess beeendet wurde muss der Filter nochmal angewendet werden
+    filterPokemons(); // Nachdem der Lade-Prozess beendet wurde muss der Filter nochmal angewendet werden
     loadingPokemons=false; //Loading Process finished
     document.getElementById('loader-bg').classList.add('d-none');
 }
@@ -64,9 +64,7 @@ function renderPokemonInfo(currentpokemon, id) {
     let name = capitalizeFirstLetter(currentpokemon['name']); // Name of Pokemon
 
     setbgcolorforCurrentPokemon();
-
     generatePokecard(id, picture, name, bgcol);
-
     fillPokecard(id, picture, name);
 
     id++;
@@ -74,19 +72,12 @@ function renderPokemonInfo(currentpokemon, id) {
 /* [5.] Render the currenpokemon */
 
 
-/* [7.] Fills the PokeCard for the Current Pokemon with values */
+/* [6.] Fills the PokeCard for the Current Pokemon with values */
 function fillPokecard(id, picture, name) {
     document.getElementById(`name${id}`).innerHTML = name;
     document.getElementById(`image${id}`).src = picture;
     document.getElementById(`number${id}`).innerHTML = `<b># ${currentpokemon['id']}</b>`;
-    
-    let type1 = currentpokemon['types'][0]['type']['name'];
-    document.getElementById(`types${id}`).innerHTML = `<div class="icon ${type1}"><img src="./Img/${type1}.svg"></div>`;
-    if (typeof currentpokemon['types'][1] !== 'undefined')
-    {let type2 = currentpokemon['types'][1]['type']['name'];
-     document.getElementById(`types${id}`).innerHTML += `<div class="pad-lef"><div class="icon ${type2}"><img src="./Img/${type2}.svg"></div></div>`;
-    };
-
+    createIconsForPokecard(id);
     document.getElementById(`height${id}`).innerHTML = '<b>Height:</b> ' + currentpokemon['height'] / 10 + ' m';
     document.getElementById(`weight${id}`).innerHTML = '<b>Weight:</b> ' + currentpokemon['weight'] / 10 + ' kg';
     document.getElementById(`base-experience${id}`).innerHTML = '<b>Experience:</b> ' + currentpokemon['base_experience'];
@@ -96,7 +87,19 @@ function fillPokecard(id, picture, name) {
     document.getElementById(`abilities${id}`).style = `background-color: ${bgcolbtn};`;
     document.getElementById(`moves${id}`).style = `background-color: ${bgcolbtn};`;
 }
-/* [7.] Fills the PokeCard for the Current Pokemon with values */
+/* [6.] Fills the PokeCard for the Current Pokemon with values */
+
+
+/* [7.] Creates Icons for the Type of the current Pokemon, e.g. fire & air */
+function createIconsForPokecard(id){
+    let type1 = currentpokemon['types'][0]['type']['name'];
+    document.getElementById(`types${id}`).innerHTML = `<div class="icon ${type1}"><img src="./Img/${type1}.svg"></div>`;
+    if (typeof currentpokemon['types'][1] !== 'undefined'){
+     let type2 = currentpokemon['types'][1]['type']['name'];
+     document.getElementById(`types${id}`).innerHTML += `<div class="pad-lef"><div class="icon ${type2}"><img src="./Img/${type2}.svg"></div></div>`;
+    };
+}
+/* [7.] Creates Icons for the Type of the current Pokemon, e.g. fire & air */
 
 
 /* [8.] Saves the background-color for the PokeCard of the Current Pokemon */
@@ -139,6 +142,7 @@ function setbgcolorforCurrentPokemon() {
 }
 /* [8.] Saves the background-color for the PokeCard of the Current Pokemon */
 
+
 /* [9.] If you press the Locations-Button */
 function showLocations(id, Info, picture, name, bgcol, type, bgcollist) {
     let path = `https://pokeapi.co/api/v2/pokemon/${id}/encounters`;
@@ -148,6 +152,7 @@ function showLocations(id, Info, picture, name, bgcol, type, bgcollist) {
     fillDetailsCard(name, picture, bgcol, text, type, bgcollist);
 }
 /* [9.] If you press the Locations-Button */
+
 
 /* [10.] If you press the Species-Button */
 function showSpecies(id, Info, picture, name, bgcol, type, bgcollist) {
@@ -162,7 +167,7 @@ function showSpecies(id, Info, picture, name, bgcol, type, bgcollist) {
 
 /* [11.] If you press the Abilities-Button */
 function showAbilities(id, Info, picture, name, bgcol, type, bgcollist) {
-    let path = `https://pokeapi.co/api/v2/pokemon/${id}`; //Ursprüngliche Suche
+    let path = `https://pokeapi.co/api/v2/pokemon/${id}`; //Original Search
     loadAdditionalInfos(path, Info);
 
     let text = `Abilities of ${name}:`;
@@ -173,7 +178,7 @@ function showAbilities(id, Info, picture, name, bgcol, type, bgcollist) {
 
 /* [12.] If you press the Moves-Button */
 async function showMoves(id, Info, picture, name, bgcol, type, bgcollist) {
-    let path = `https://pokeapi.co/api/v2/pokemon/${id}`; //Ursprüngliche Suche
+    let path = `https://pokeapi.co/api/v2/pokemon/${id}`; //Original Search
     await loadAdditionalInfos(path, Info);
 
     let text = `Moves of ${name}:`;
@@ -187,7 +192,6 @@ function fillDetailsCard(name, picture, bgcol, text, type, bgcollist) {
     document.getElementById(`addInfosPokemon`).innerHTML = name;
     document.getElementById(`addInfosImg`).src = picture;
     document.getElementById(`addSubheader`).innerHTML = text;
-
     document.getElementById('info-box').style = `background-color: ${bgcol};`
     document.getElementById('ListforInfos').style = `background-color: ${bgcollist};`
     document.getElementById('infolist').className='';
@@ -213,7 +217,6 @@ async function loadAdditionalInfos(url, Info) {
     if (Info == 'Species') { fillSpecies(usage); };
     if (Info == 'Abilities') { fillAbilities(usage); };
     if (Info == 'Moves') { fillMoves(usage); };
-
 }
 /* [14.] If Detail-Card of a Pokemon is shown, then more data is needed */
 
@@ -256,8 +259,6 @@ function fillSpecies(usage){
            liel.appendChild(document.createTextNode(usage['flavor_text_entries'][i]['flavor_text']));
            list.appendChild(liel);
            };
-          //console.log('Location: ',usage[i]['location_area']['name']);
-         // HTML-CODE to Come
         };  
         }
         else
@@ -272,7 +273,6 @@ function fillSpecies(usage){
 /* [17.] Abilities will be listed */
 function fillAbilities(usage){
         let len = usage['abilities'].length;
-        //console.log('Locations Länge: ',usage.length);
         let list = document.getElementById('ListforInfos');
         list.innerHTML=``;
   
@@ -346,21 +346,18 @@ function filterPokemons() {
     for (i = 1 ; i < endnumberofpokemons ; i++) {
        // Problem beim Filter ist, dass er sich teilweise auf HTML-Elemente anwendet die noch gar nicht existieren!!!
        // DESWEGEN: 2 Fälle! 
-       // Falls er das HTML-ELEMENT findet wird es unsichtbar gemacht falls es nicht den Filter-Kriterien entspricht
+       // Falls er das HTML-ELEMENT findet wird es unsichtbar gemacht, wenn es nicht den Filter-Kriterien entspricht
         if(document.getElementById(`name${i}`) !=null){
-        //console.log(i + 'Nicht Null');
-
             if (len > 0) {
                 if (document.getElementById(`name${i}`).innerHTML.slice(0, len) != searchinput) { hideElement(`pokemon${i}`); }
                 else { showElement(`pokemon${i}`); }
             }
             else { showElement(`pokemon${i}`); };
         }
-
         else
         // Falls er das HTML-ELEMENT nicht findet macht er gar nichts, somit wird ein Fehler vermieden
         {
-        //console.log(i + 'Null');
+        //Do Nothing
         }
             
     }
@@ -377,11 +374,11 @@ window.onclick = function (event) {
 /* [23.] Close the Fixed Element */
 
 
-/* [24.] Gibt den übergebenen String zurück aber macht den ersten Buchstaben groß */
+/* [24.] Returns the string back, but with capital first letter */
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
-/* [24.] Gibt den übergebenen String zurück aber macht den ersten Buchstaben groß */
+/* [24.] Returns the string back, but with capital first letter */
 
 
 /* [25.] jQuery zum Nachladen von Daten, wenn man übers Scrollen ganz unten beim Dokument angekommen ist */

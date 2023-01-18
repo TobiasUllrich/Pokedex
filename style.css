@@ -1,12 +1,15 @@
 html {
-    scroll-behavior: smooth; /* Standard */
+    scroll-behavior: smooth; 
+}
+
+h1, b{
+    cursor:context-menu;
 }
 
 body {
-    margin: 0px; /* Browser-Standard rückgängig machen: Äußerer Abstand */
-    font-family: 'Battambang'; /* Schriftart für den ganzen Body-Bereich festlegen */
-    overflow-x: hidden; /* Standard: Was auf der X-Achse aus dem Body/Tag rausläuft wird nicht mehr gezeigt */
-    /* muss dem Body gegeben werden, ABER funktioniert nicht auf dem Handy -> Lösung: Alles in eine <div> was in <body> ist und diesem <div> das overflow-Attribut geben */
+    margin: 0px;
+    font-family: 'Battambang'; 
+    overflow-x: hidden; 
 }
 
 .header {
@@ -198,7 +201,6 @@ button {
     justify-content: center;
 }
 
-
 .info-bg {
     background-color: rgba(0, 0, 0, 0.7);
     position: fixed;
@@ -285,6 +287,11 @@ button {
 
 .pad-bot{
     padding-bottom:5px;
+    cursor: context-menu;
+}
+
+.curs{
+    cursor: context-menu; 
 }
 
 .pad-bot2{
@@ -562,18 +569,18 @@ button {
 }
 
 .loader {
-    border: 16px solid #f3f3f3; /* Light grey */
-    border-top: 16px solid black; /* Blue */
+    border: 16px solid #f3f3f3;
+    border-top: 16px solid black;
     border-radius: 50%;
     width: 50px;
     height: 50px;
     animation: spin 2s linear infinite;
-  }
+}
   
-  @keyframes spin {
+@keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-  }
+}
 /* Spinner */
 
 @media (min-width:901px) and (max-width:1260px) {
@@ -646,7 +653,6 @@ button {
         margin-left:5px;
         margin-top:5px;
     }
-
 }
 
 @media (min-width:400px) and (max-width:699px) {
